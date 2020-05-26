@@ -26,13 +26,13 @@ public class Libro {
 	private Integer	idLibro;
 	
 	@Column(name="s_titulo")
-	@Size(message="El titulo no debe tener mas de 500 caracteres", max = 500)
-	@NotEmpty(message="Este campo no puede estar vacío")
+	@Size(message="El campo titulo sobrepasa la cantidad de 500 caracteres", max = 500)
+	@NotEmpty(message="El campo titulo no puede estar vacío")
 	private String titulo;
 	
 	@Column(name="s_autor")
-	@Size(message="El autor no debe tener mas de 150 caracteres", max = 150)
-	@NotEmpty(message="Este campo no puede estar vacío")
+	@Size(message="El campo autor sobrepasa la cantidad de 150 caracteres", max = 150)
+	@NotEmpty(message="El campo autor no puede estar vacío")
 	private String autor;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -46,8 +46,8 @@ public class Libro {
 	private Boolean estado;
 	
 	@Column(name="s_isbn")
-	@Size(message="El isbn no debe tener mas de 10 caracteres", max = 10)
-	@NotEmpty(message="Este campo no puede estar vacío")
+	@Size(message="El campo isbn sobrepasa la cantidad de 10 caracteres", max = 10)
+	@NotEmpty(message="El campo isbn no puede estar vacío")
 	private String isbn;
 
 	public Integer getIdLibro() {
@@ -115,7 +115,7 @@ public class Libro {
 			return "";
 		}
 		else{
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 			String shortdate = sdf.format(this.fecha.getTime());
 			return shortdate;
 		}
