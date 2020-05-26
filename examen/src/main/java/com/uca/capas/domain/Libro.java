@@ -46,6 +46,8 @@ public class Libro {
 	private Boolean estado;
 	
 	@Column(name="s_isbn")
+	@Size(message="El isbn no debe tener mas de 10 caracteres", max = 10)
+	@NotEmpty(message="Este campo no puede estar vacío")
 	private String isbn;
 
 	public Integer getIdLibro() {

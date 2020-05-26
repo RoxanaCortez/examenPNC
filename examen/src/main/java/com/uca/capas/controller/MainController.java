@@ -110,4 +110,19 @@ public class MainController {
 		return mav;
 	
 	}
+	
+	@GetMapping("/libros")
+	public ModelAndView contibuyentes() {
+		ModelAndView mav = new ModelAndView();
+		List<Libro> libros = null;
+		Libro libro = new Libro();
+		List<Categoria> categorias = null;
+		categorias = categoriaService.findAll();
+		libros = libroService.findAll();
+		mav.addObject("categorias", categorias);
+		mav.addObject("libro", libro);
+		mav.addObject("libros", libros);
+		mav.setViewName("libros");
+		return mav;
+	}
 }

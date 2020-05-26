@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>libros</title>
+</head>
+<body>
+	<div class="contenedor-tabla" align="center">
+		<h1>Lista de libros</h1>
+		<br/>
+				<div class="buttom-container">
+					<a th:href="@{/libroFormulario}">
+						<input class="boton-nuevo" type="submit"  value="Ingresar nuevo libro" >
+					</a>
+			   </div>
+		<table class="tabla" border="1">
+			<thead>
+				<tr>
+					<th>Titulo</th>
+					<th>Autor</th>
+					<th>ISBN</th>
+					<th>Categoria</th>
+					<th>Fecha</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="libro, row:${libros}">
+					<td th:text="${libro.titulo}">Titulo</td>
+					<td th:text="${libro.autor}">Autor</td>
+					<td th:text="${libro.isbn}">ISBN</td>
+					<td th:text="${libro.categoria.categoria}">Categoria</td>
+					<td th:text="${libro.fechaDelegate}">Fecha</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+	</div>	
+</body>
+</html>
