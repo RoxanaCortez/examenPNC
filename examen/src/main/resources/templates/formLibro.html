@@ -20,7 +20,7 @@
 			<span th:errors="*{autor}" style="color: #E81505"></span>  <br>
 			
 			<label>ISBN:</label> 
-			<input type="number" th:field="*{isbn}" placeholder=" "><br>
+			<input type="text" th:field="*{isbn}" placeholder=" "><br>
 			<span th:errors="*{isbn}" style="color: #E81505"></span>  <br>
 			
 			<label>Categoria :</label>
@@ -36,7 +36,7 @@
 			
 			<input class="boton" type="submit" value="Ingresar libro"> <br>
 		</form>
-		<a href="/contribuyentes">
+		<a href="/libros">
 			<input class="boton-regresar" type="submit" value="Ver libros">
 		</a>
 	</div>
