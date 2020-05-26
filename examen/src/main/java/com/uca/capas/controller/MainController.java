@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.domain.Categoria;
+import com.uca.capas.domain.Libro;
 import com.uca.capas.service.CategoriaService;
 import com.uca.capas.service.LibroService;
 
@@ -43,6 +44,18 @@ public class MainController {
 		return mav;
 	}
 	
+	@GetMapping("/libroFormulario")
+	public ModelAndView libroFormulario() {
+		ModelAndView mav = new ModelAndView();
+		List<Categoria> listaCategorias = null;
+		listaCategorias = categoriaService.findAll();
+		Libro libro = new Libro();
+		mav.addObject("categorias", listaCategorias);
+		mav.addObject("libro", libro);
+		mav.setViewName("formLibro");
+		return mav;
+	}
+	
 	@PostMapping("/ingresarCategoria")
 	public ModelAndView ingresar(@Valid @ModelAttribute Categoria categoria, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
@@ -57,6 +70,38 @@ public class MainController {
 				categoriaService.insertar(categoria);
 				
 				mav.addObject("exito", "Categoria guardada con éxito");
+				mav.setViewName("index");
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+		return mav;
+	
+	}
+	
+	@PostMapping("/ingresarLibro")
+	public ModelAndView ingresar(@Valid @ModelAttribute Libro libro, BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+		if(result.hasErrors()) { 
+			List<Categoria> categorias= null;
+			try {
+				categorias =  categoriaService.findAll();
+				
+				mav.addObject("categorias",categorias);
+				mav.setViewName("formLibro");
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}else {	
+			try {
+				ZoneId zona = ZoneId.systemDefault();
+				LocalDate fechaActual = LocalDate.now();
+				Date fecha = Date.from(fechaActual.atStartOfDay(zona).toInstant());
+				libro.setFecha(fecha);
+				libro.getFecha();
+				libroService.insertar(libro);
+				
+				mav.addObject("exito2", "Libro guardado con éxito");
 				mav.setViewName("index");
 			}catch(Exception ex) {
 				ex.printStackTrace();

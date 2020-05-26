@@ -118,4 +118,14 @@ public class Libro {
 			return shortdate;
 		}
 	}
+	
+	public String getBactivoDelegate(){
+		if(this.estado == null){
+			return "";
+		}
+		else{
+			if(this.estado) return "ACTIVO";
+			else return "INACTIVO";
+		}
+	}
 }
