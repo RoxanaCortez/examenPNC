@@ -19,4 +19,34 @@ public class Categoria {
 	@NotEmpty(message="Este campo no puede estar vacío")
 	private String	categoria;
 	
+	
+	
+	public Integer getIdCategoria() {
+		return idCategoria;
+	}
+
+
+
+	public void setIdCategoria(Integer idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+
+
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+
+
+	public Categoria(){
+		super();
+	}
+	
 }
