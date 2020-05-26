@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ingresar contribuyente</title>
+<link href="css/estilo_examen.css" rel="stylesheet">
+</head>
+<body>
+	<div class="contenedor">
+		<form th:action="@{/ingresarContribuyente}" th:object="${contribuyente}" method="post">
+			<h2 class="titulo-form">Ingresar contribuyente</h2>
+			
+			<input type="hidden" th:field="*{codigo_c}">
+			
+			<label>Nombre:</label> 
+			<input type="text" th:field="*{nombre}" placeholder=" "><br> 
+			<span th:errors="*{nombre}" style="color: #E81505"></span> 
+			
+			<label>Apellido:</label> 
+			<input type="text" th:field="*{apellido}" placeholder=" "> <br> 
+			<span th:errors="*{apellido}" style="color: #E81505"></span> 
+			
+			<div class="nit-imp-contenedor">
+				<div class="nit">
+					<label>Nit:</label> 
+					<input type="number" th:field="*{nit}" placeholder=" "><br>
+					<span th:errors="*{nit}" style="color: #E81505"></span> 
+				</div>
+				
+				<div class = "importancia">
+					<label>Importancia :</label>
+					<div class = "select-contenedor">
+						<select th:field = "*{importancia.codigo_i}">
+							<option th:each = "impor:${importancias}"
+								th:value = "${impor.codigo_i}"
+								th:text = "${impor.importancia}">
+							</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<input class="boton" type="submit" value="Ingresar contibuyente">
+		</form>
+		<a href="/contribuyentes">
+			<input class="boton-regresar" type="submit" value="Ver contribuyentes">
+		</a>
+	</div>
+</body>
+</html>
